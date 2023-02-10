@@ -19,6 +19,7 @@ function NotNull<T>(val: T, message: string): void;
  */
 function NotNull<T>(val: T, message?: string): void
 {
+    // I love this ternary.
     message = message ? message : 'Value passed to NotNull was, indeed, null.';
 
     if(val === null)
