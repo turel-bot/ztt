@@ -4,11 +4,10 @@
     <img src="logos/turel.gif" width="200" align="center">
     <div align="center">
         <p>
-            turrel is a free and open source <a href="discord.gg">Discord</a> bot 
+            ztt, a poorly written object utility lib
         </p>
         <p>
-            this is the framework that supports
-            turel bot. (commands & stuff)
+            developed by <a href="github.com/turel-bot">turel bot</a>.
         </p>
         <p>
             <a href="https://discord.com/api/oauth2/authorize?client_id=1054601338312466505&permissions=8&scope=bot%20applications.commands">Invite to your server</a> - <a href="https://discord.gg/q2QJaBABwP">Support Server</a>
@@ -45,7 +44,13 @@ behind the bot, and the general layout of the source code within.
 <!-- how to install the lib... -->
 ### Installation
 
-**FILL**
+```sh
+git clone github.com/turel-bot/ztt.git
+cd ztt-muncho
+
+npm i
+npm run compile
+```
 
 ### Acknowledgements
 
