@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "@biased-ts/eslint-config/ProperTS",
+        "@biased-ts/eslint-config/ProperDoc"
+    ],
+    "root": true,
+    "parserOptions": {
+        "project": [
+            "./tsconfig.json",
+            "./tests/tsconfig.json"
+        ]
+    },
+    "rules": {
+        "@typescript-eslint/prefer-readonly-parameter-types": [0]
+    }
+}
