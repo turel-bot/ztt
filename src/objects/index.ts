@@ -1,9 +1,11 @@
+import Annotations from './annotations';
 import ArrayToObject from './ArrayToObject';
 import Callback from './Callback';
 import Clone from './Clone';
 import DoesExtend from './DoesExtend';
 import Exists from './Exists';
 import ExtendsWhat from './ExtendsWhat';
+import ForceSingleton from './ForceSingleton';
 import IsEmpty from './IsEmpty';
 import IsNull from './IsNull';
 import NotNull from './NotNull';
@@ -25,7 +27,10 @@ const Objects = {
     DoesExtend: DoesExtend,
     ExtendsWhat: ExtendsWhat,
     NotNull: NotNull,
-    NonNull: NotNull
+    NonNull: NotNull,
+    ForceSingleton: ForceSingleton,
+
+    annotations: Annotations
 };
 
 const ObjectsArray = ObjectToArray<typeof Objects>(Objects);
