@@ -6,6 +6,7 @@ import Exists from './Exists';
 import ExtendsWhat from './ExtendsWhat';
 import IsEmpty from './IsEmpty';
 import IsNull from './IsNull';
+import NotNull from './NotNull';
 import ObjectToArray from './ObjectToArray';
 
 /**
@@ -22,7 +23,9 @@ const Objects = {
     Callback: Callback,
     Clone: Clone,
     DoesExtend: DoesExtend,
-    ExtendsWhat: ExtendsWhat
+    ExtendsWhat: ExtendsWhat,
+    NotNull: NotNull,
+    NonNull: NotNull
 };
 
 const ObjectsArray = ObjectToArray<typeof Objects>(Objects);

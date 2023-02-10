@@ -45,4 +45,10 @@ describe('objects tests', () =>
         expect(Objects.DoesExtend(clazz1, clazz2)).toBeTruthy();
         expect(Objects.DoesExtend(clazz2, clazz1)).toBeFalsy();
     });
+
+    it('can use nonnull and throw correctly', () =>
+    {
+        expect(() => Objects.NotNull(null)).toThrow();
+        expect(() => Objects.NotNull({ a: 'b' })).not.toThrow();
+    });
 });
