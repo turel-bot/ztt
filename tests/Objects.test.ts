@@ -50,6 +50,10 @@ describe('objects tests', () =>
     {
         expect(() => Objects.NotNull(null)).toThrow();
         expect(() => Objects.NotNull({ a: 'b' })).not.toThrow();
+
+        class CustomError extends Error { }
+
+        expect(() => Objects.NotNull(null, undefined, CustomError)).toThrowError(CustomError);
     });
 
     it('can force singleton correctly', () =>

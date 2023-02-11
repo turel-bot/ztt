@@ -17,7 +17,7 @@ function NotNull<T>(val: T, message: string): void;
  * @param {string?} message - The message to throw the Error with. (if you'd like to provide a custom one.)
  * @throws
  */
-function NotNull<T>(val: T, message?: string): void;
+function NotNull<T>(val: T, message?: string, error?: new (message: string) => Error): void;
 /**
  * @description Checks if an Object is null, if it is throws an Error.
  * @param {T} val - The to check if is null.  
