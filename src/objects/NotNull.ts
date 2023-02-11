@@ -3,7 +3,7 @@
  * @param {T} val - The to check if is null.  
  * @throws
  */
-function NotNull<T>(val: T): void
+function NotNull<T>(val: T): void;
 /**
  * @description Checks if an Object is null, if it is throws an Error.
  * @param {T} val - The to check if is null.  
@@ -17,13 +17,24 @@ function NotNull<T>(val: T, message: string): void;
  * @param {string?} message - The message to throw the Error with. (if you'd like to provide a custom one.)
  * @throws
  */
-function NotNull<T>(val: T, message?: string): void
+function NotNull<T>(val: T, message?: string): void;
+/**
+ * @description Checks if an Object is null, if it is throws an Error.
+ * @param {T} val - The to check if is null.  
+ * @param {string?} message - The message to throw the Error with. (if you'd like to provide a custom one.)
+ * @param {Error?} error - The type of Error (the class, nor an instance.)
+ * @throws
+ */
+function NotNull<T>(val: T, message?: string, error?: new (message: string) => Error): void
 {
     // I love this ternary.
     message = message ? message : 'Value passed to NotNull was, indeed, null.';
 
     if(val === null)
-        throw new Error(message);
+        if(error)
+            throw new error(message);
+        else
+            throw new Error(message);
 }
 
 export default NotNull;
