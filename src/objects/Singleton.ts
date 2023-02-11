@@ -1,9 +1,26 @@
 import Objects from '.';
 
+/**
+ * @description A simple type that includes anything on the prototype that the class has, 
+ * along side a variable and function to get the class instance.
+ */
 type Singleton<T extends new (...args: any[]) => C, C = InstanceType<T>> = T & {
+    /**
+     * @description The instance of the class.
+     * @type {C} 
+     */
     _instance: C;
 
+    /**
+     * @description Gets the class instance.
+     * @returns {C} The instance of the class, or the newly created one.
+     */
     getInstance(): C;
+    /**
+     * @description Gets the class instance, or creates a new one with the arguments provided.
+     * @param {any[]} args - Any argument.
+     * @returns {C} The instance of the class, or the newly created one.  
+     */
     getInstance(...args: any[]): C;
 };
 

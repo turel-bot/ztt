@@ -5,7 +5,7 @@ import Clone from './Clone';
 import DoesExtend from './DoesExtend';
 import Exists from './Exists';
 import ExtendsWhat from './ExtendsWhat';
-import Singleton from './ForceSingleton';
+import Singleton from './Singleton';
 import IsEmpty from './IsEmpty';
 import IsNull from './IsNull';
 import NotNull from './NotNull';
