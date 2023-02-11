@@ -52,21 +52,21 @@ describe('objects tests', () =>
         expect(() => Objects.NotNull({ a: 'b' })).not.toThrow();
     });
 
-    // it('can force singleton correctly', () =>
-    // {
-    //     class clazzSingle
-    //     {
-    //         public echo<T>(a: T): T
-    //         {
-    //             return a;
-    //         }
-    //     }
+    it('can force singleton correctly', () =>
+    {
+        class clazzSingle
+        {
+            public echo<T>(a: T): T
+            {
+                return a;
+            }
+        }
 
-    //     const abaa = Objects.ForceSingleton(clazzSingle);
-    //     abaa.getInstance();
+        const abaa = Objects.Singleton(clazzSingle);
 
-    //     expect(Objects.ForceSingleton(clazzSingle)).toBeDefined();
-    //     expect(Objects.ForceSingleton(clazzSingle)).toBeInstanceOf(clazzSingle);
-    //     expect(Objects.ForceSingleton(clazzSingle).echo({ a: 'b' })).toBe({ a: 'b' });
-    // });
+        expect(abaa.getInstance()).toBeDefined();
+        expect(abaa.getInstance()).toBeInstanceOf(clazzSingle);
+        expect(abaa.getInstance().echo({ a: 'b' })).toStrictEqual({ a: 'b' });
+        expect(() => Objects.Singleton(clazzSingle)).toThrow();
+    });
 });
