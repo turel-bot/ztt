@@ -31,6 +31,7 @@ function NotNull<T>(val: T, message?: string, error?: new (message: string) => E
     message = message ? message : 'Value passed to NotNull was, indeed, null.';
 
     if(val === null)
+        // we can't use a ternary here. crying.
         if(error)
             throw new error(message);
         else
