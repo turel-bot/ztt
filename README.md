@@ -48,8 +48,7 @@ behind the bot, and the general layout of the source code within.
 git clone github.com/turel-bot/ztt.git
 cd ztt-muncho
 
-npm i
-npm run compile
+npm i && npm run compile
 ```
 
 ### Acknowledgements
