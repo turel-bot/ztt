@@ -14,6 +14,12 @@ const Clone = <T>(val: T): T =>
 
     // done in order to 
     // a. deep clone the object
+    // if we say, use the spread operator
+    // EX: { ...object }
+    // if we edit a part of the object (due to it being shallow)
+    // on the original call,
+    // the one we get back from #clone will be modified
+    // (look @ example below as well)
     // b. allow for the objects to be different 
     // so if you do say, 
     // const a = { a: 'b', c: [ 'd' ] }; 
