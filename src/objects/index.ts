@@ -44,10 +44,15 @@ const keys = Object.keys(Objects);
 /** @private */
 const vals = Object.values(Objects);
 for(let i: number = 0; i < keys.length; i++)
-    // adds lowercased starting versions (camel instead of pascal) to the Objects.. object
-    // EX: Clone & clone
-    // @ts-expect-error This is valid.
-    Objects[keys[i][0].toLowerCase() + keys[i].slice(1)] = vals[i];
+    // aaa -> Aaa
+    // Aaa -> aaa
+    // thats it.
+    // @ts-expect-error  This is valid.
+    Objects[keys[i][0].toUpperCase() === Objects[keys[i][0]]
+        // @ts-expect-error  This is valid.
+        ? Objects[keys[i]].toLowerCase() + keys[i].slice(1)
+        // @ts-expect-error  This is valid.
+        : Objects[keys[i]].toUpperCase() + keys[i].slice(1)] = vals[i];
 
 export default Objects;
 export { Objects, ObjectsArray };
