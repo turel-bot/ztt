@@ -37,6 +37,25 @@ describe('objects tests', () =>
             .toStrictEqual({});
     });
 
+    it('can clone an array', () =>
+    {
+        expect(Objects.Clone(['a', 'b']))
+            .toStrictEqual(['a', 'b']);
+
+        expect(Objects.Clone([]))
+            .toStrictEqual([]);
+
+        const arrayData = ['c', ['e', 'f']];
+        const clonedValue = Objects.Clone(arrayData);
+        expect(clonedValue[0]).toEqual('c');
+        expect(clonedValue[1]).toStrictEqual(['e', 'f']);
+
+        clonedValue[1] = ['z', 'v'];
+
+        expect(arrayData[1]).toStrictEqual(['e', 'f']);
+        expect(clonedValue[1]).toStrictEqual(['z', 'v']);
+    });
+
     it('can see if a class extends another', () =>
     {
         class clazz1 { }

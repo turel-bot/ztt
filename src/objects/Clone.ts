@@ -13,7 +13,7 @@ const Clone = <T>(val: T): T =>
         return val;
 
     if(Array.isArray(val))
-        return [...val] as T;
+        return JSON.parse(JSON.stringify(val)) as T;
 
     return { ...val };
 };
