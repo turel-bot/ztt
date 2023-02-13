@@ -10,6 +10,7 @@ import IsEmpty from './IsEmpty';
 import IsNull from './IsNull';
 import NotNull from './NotNull';
 import ObjectToArray from './ObjectToArray';
+import Pipe, { Piped } from './Pipe';
 
 /**
  * @description A helper for anything regarding Objects.
@@ -29,6 +30,9 @@ const Objects = {
     NotNull: NotNull,
     NonNull: NotNull,
     Singleton: Singleton,
+    Pipe: Pipe,
+    Piped: Piped,
+    PipeLine: Pipe,
 
     annotations: Annotations
 };
