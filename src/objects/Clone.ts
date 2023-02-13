@@ -12,6 +12,14 @@ const Clone = <T>(val: T): T =>
     if(typeof val !== 'object')
         return val;
 
+    // done in order to 
+    // a. deep clone the object
+    // b. allow for the objects to be different 
+    // so if you do say, 
+    // const a = { a: 'b', c: [ 'd' ] }; 
+    // const z = Clone(a);
+    // a[0][1] = 'b';
+    // // z[0][1] === 'b'
     return JSON.parse(JSON.stringify(val)) as T;
 };
 
