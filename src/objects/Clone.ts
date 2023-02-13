@@ -12,10 +12,7 @@ const Clone = <T>(val: T): T =>
     if(typeof val !== 'object')
         return val;
 
-    if(Array.isArray(val))
-        return JSON.parse(JSON.stringify(val)) as T;
-
-    return { ...val };
+    return JSON.parse(JSON.stringify(val)) as T;
 };
 
 export default Clone;
