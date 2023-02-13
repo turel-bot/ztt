@@ -31,11 +31,18 @@ function NotNull<T>(val: T, message?: string, error?: new (message: string) => E
     message = message ? message : 'Value passed to NotNull was, indeed, null.';
 
     if(val === null)
-        // we can't use a ternary here. crying.
-        if(error)
-            throw new error(message);
-        else
-            throw new Error(message);
+        // throws the error you wanted, or the custom Error you passed.
+        error ? ThrowError(error, message) : ThrowError(Error, message);
+}
+
+/**
+ * @private
+ * @description Wraps throwing an Error so we can use a ternary statement.
+ * @throws
+ */
+function ThrowError(error: new (message: string) => Error, message: string): void
+{
+    throw new error(message);
 }
 
 export default NotNull;
