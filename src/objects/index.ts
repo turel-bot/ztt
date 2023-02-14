@@ -40,7 +40,7 @@ const Objects = {
 const ObjectsArray = ObjectToArray<typeof Objects>(Objects);
 
 /** @private */
-const keys = Object.keys(Objects);
+const keys: keyof typeof Objects = Object.keys(Objects) as unknown as keyof typeof Objects;
 /** @private */
 const vals = Object.values(Objects);
 for(let i: number = 0; i < keys.length; i++)
