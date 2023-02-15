@@ -44,15 +44,13 @@ const keys: keyof typeof Objects = Object.keys(Objects) as unknown as keyof type
 /** @private */
 const vals = Object.values(Objects);
 for(let i: number = 0; i < keys.length; i++)
-    // aaa -> Aaa
     // Aaa -> aaa
     // thats it.
-    // @ts-expect-error  This is valid.
-    Objects[keys[i][0].toUpperCase() === Objects[keys[i][0]]
+    keys[i][0].toLowerCase() === keys[i][0]
         // @ts-expect-error  This is valid.
-        ? Objects[keys[i]][0].toLowerCase() + keys[i].slice(1)
+        ? Objects[keys[i][0].toUpperCase() + keys[i].slice(1)] = vals[i]
         // @ts-expect-error  This is valid.
-        : Objects[keys[i]][0].toUpperCase() + keys[i].slice(1)] = vals[i];
+        : Objects[keys[i][0].toLowerCase() + keys[i].slice(1)] = vals[i];
 
 export default Objects;
 export { Objects, ObjectsArray };
