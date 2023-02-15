@@ -54,6 +54,11 @@ describe('objects tests', () =>
 
         expect(arrayData[1]).toStrictEqual(['e', 'f']);
         expect(clonedValue[1]).toStrictEqual(['z', 'v']);
+
+        arrayData[1] = ['1', '2'];
+
+        expect(arrayData[1]).toStrictEqual(['1', '2']);
+        expect(clonedValue[1]).toStrictEqual(['z', 'v']);
     });
 
     it('can see if a class extends another', () =>
