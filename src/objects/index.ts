@@ -50,9 +50,9 @@ for(let i: number = 0; i < keys.length; i++)
     // @ts-expect-error  This is valid.
     Objects[keys[i][0].toUpperCase() === Objects[keys[i][0]]
         // @ts-expect-error  This is valid.
-        ? Objects[keys[i]].toLowerCase() + keys[i].slice(1)
+        ? Objects[keys[i]][0].toLowerCase() + keys[i].slice(1)
         // @ts-expect-error  This is valid.
-        : Objects[keys[i]].toUpperCase() + keys[i].slice(1)] = vals[i];
+        : Objects[keys[i]][0].toUpperCase() + keys[i].slice(1)] = vals[i];
 
 export default Objects;
 export { Objects, ObjectsArray };
