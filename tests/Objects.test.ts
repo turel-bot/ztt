@@ -1,4 +1,13 @@
-import Objects from '../src';
+import '../src';
+
+// this is required due to us not actually having the package installed.
+import type AObjects from '../src/objects';
+declare global
+{
+    // this is required
+    // eslint-disable-next-line no-var
+    var Objects: typeof AObjects;
+}
 
 describe('objects tests', () =>
 {
