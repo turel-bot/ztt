@@ -5,7 +5,6 @@
 /** -----------------------------------------------  */
 // (and sum data for using)
 
-import Objects from './objects';
 import makeGlobal from './unsafe/makeGlobal';
 
 /** @description Are we running in Node? */
@@ -16,12 +15,10 @@ let isNode: boolean = true;
 if(typeof window !== 'undefined' && typeof process !== 'object')
     isNode = false;
 
+
+// call makeGlobal initally.
+makeGlobal();
 export
 {
-    isNode,
-    Objects,
-    makeGlobal
+    isNode
 };
-
-
-export default Objects;
