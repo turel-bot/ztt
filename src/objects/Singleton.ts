@@ -34,13 +34,8 @@ const Singleton = <T extends new (...args: any[]) => any, C = InstanceType<T>>(c
 {
     Objects.NotNull(clazz, 'Class provided for turning into a Singleton cannot be null.');
 
-    // @ts-expect-error valid
-    if(clazz['_instance'] !== null && clazz['_instance'] !== undefined)
-    {
-        // @ts-expect-error aaa
-        console.log('_instance: ' + clazz['_instance']);
+    if((clazz as any as Record<string, unknown>)['_instance'] !== null && (clazz as any as Record<string, unknown>)['_instance'] !== undefined)
         throw new Error('_instance field already exists on Class prototype. Cannot make something that is already a singleton into a singleton.');
-    }
 
     Object.defineProperty(
         clazz,
