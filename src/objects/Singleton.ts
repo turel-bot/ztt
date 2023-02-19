@@ -43,8 +43,7 @@ const Singleton = <T extends new (...args: any[]) => any, C = InstanceType<T>>(c
         {
             set: (clazz: C) =>
             {
-                // @ts-expect-error this is valid
-                clazz._instance = clazz;
+                (clazz as Singleton<T, C>)._instance = clazz;
             }
         }
     );
@@ -55,9 +54,8 @@ const Singleton = <T extends new (...args: any[]) => any, C = InstanceType<T>>(c
         {
             value: (...args: any[]) =>
             {
-                // @ts-expect-error this is valid
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                return (clazz._instance) || (clazz._instance = new clazz(...args));
+                return ((clazz as Singleton<T>)._instance) || ((clazz as Singleton<T>)._instance = new clazz(...args));
             }
         }
     );
