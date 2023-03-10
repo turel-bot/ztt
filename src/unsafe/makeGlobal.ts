@@ -1,25 +1,31 @@
 import obj from '../objects';
-import { isNode } from '../';
+import validate from '../objects/validate';
 
-declare let window: any;
-
-/** @description Makes the Objects variable globally available. */
+/** @private @description Makes the Objects variable globally available. */
 const makeGlobal = (): void =>
 {
-    console.log('called #makeGlobal');
-    if(isNode)
-    {
-        if(!global)
-            return;
+    // if global is defined, then we are most likely running in node
+    // so set it up for node
+    if(typeof global !== 'undefined')
+        makeGlobalNode();
 
-        global.Objects = obj;
-        return;
-    }
+    // window means we're runnig in the web, so set it up for the web/DOM
+    if(typeof window !== 'undefined')
+        makeGlobalDom();
+};
 
-    if(!window)
-        return;
+/** @private @description Makes Objects & Validate globally accessable for the Node runtime. */
+const makeGlobalNode = (): void =>
+{
+    global.Objects = obj;
+    global.Validate = validate;
+};
 
+/** @private @description Makes Objects & Validate globally accessable for the Web. */
+const makeGlobalDom = (): void =>
+{
     window.Objects = obj;
+    window.Validate = validate;
 };
 
 export default makeGlobal;
