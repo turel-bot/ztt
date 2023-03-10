@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import type objectsObj from './objects';
 
-declare global
+declare namespace globalThis
 {
     // this is required
     // eslint-disable-next-line no-var
