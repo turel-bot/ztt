@@ -47,6 +47,29 @@ describe('objects tests', () =>
 
         expect(Objects.Clone({}))
             .toStrictEqual({});
+
+        const objectToClone = {
+            a: 'b',
+            c: {
+                d: 'e'
+            }
+        };
+
+        const clonedData = Objects.Clone(objectToClone);
+
+        expect(clonedData['a']).toEqual(objectToClone['a']);
+
+        clonedData['a'] = 'c';
+        clonedData['c'] = {
+            d: 'f'
+        };
+
+
+        expect(clonedData['a']).not.toEqual(objectToClone['a']);
+        expect(clonedData['c']).not.toEqual(objectToClone['c']);
+        expect(clonedData['c']).toStrictEqual({ d: 'f' });
+        expect(objectToClone['a']).toEqual('b');
+        expect(objectToClone['c']).toStrictEqual({ d: 'e' });
     });
 
     it('can clone an array', () =>
