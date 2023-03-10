@@ -64,7 +64,6 @@ describe('objects tests', () =>
             d: 'f'
         };
 
-
         expect(clonedData['a']).not.toEqual(objectToClone['a']);
         expect(clonedData['c']).not.toEqual(objectToClone['c']);
         expect(clonedData['c']).toStrictEqual({ d: 'f' });
