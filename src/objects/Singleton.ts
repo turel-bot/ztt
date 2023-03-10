@@ -25,6 +25,24 @@ type Singleton<T extends new (...args: any[]) => C, C = InstanceType<T>> = T & {
 };
 
 /**
+ * @description A simple type that includes anything on the prototype that the class has, 
+ * along side a variable and function to get the class instance.
+ */
+type SingletonGetter<T extends new (...args: any[]) => C, C = InstanceType<T>> = T & {
+    /**
+     * @description The instance of the class.
+     * @type {C} 
+     */
+    _instance: C;
+
+    /**
+     * @description Gets the class instance.
+     * @returns {C} The instance of the class, or the newly created one.
+     */
+    getInstance: C;
+};
+
+/**
  * @description Turns a class into a singleton.
  * @param {new (...args: any[]) => any} clazz - Any class constructor. 
  * @returns {Singleton<T, C>} A new singleton-ified class (the instance of).
@@ -38,7 +56,7 @@ function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(c
  * @returns {Singleton<T, C>} A new singleton-ified class (the instance of).
  * @throws If the argument is invalid.
  */
-function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T, getter: boolean): Singleton<T, C>;
+function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T, getter: boolean): SingletonGetter<T, C>;
 /**
  * @description Turns a class into a singleton.
  * @param {new (...args: any[]) => any} clazz - Any class constructor. 
@@ -46,7 +64,7 @@ function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(c
  * @returns {Singleton<T, C>} A new singleton-ified class (the instance of).
  * @throws If the argument is invalid.
  */
-function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T, getter: boolean = false): Singleton<T, C>
+function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T, getter?: boolean): Singleton<T, C>
 {
     Objects.Validate.NotNull(clazz, 'Class provided for turning into a Singleton cannot be null.');
 
@@ -67,15 +85,15 @@ function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(c
     Object.defineProperty(
         clazz,
         'getInstance',
-        getter ? {
+        (getter !== undefined) && (getter === true) ? {
+            get: () =>
+            {
+                return ((clazz as Singleton<T>)._instance) || ((clazz as Singleton<T>)._instance = new clazz());
+            }
+        } : {
             value: (...args: any[]) =>
             {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                return ((clazz as Singleton<T>)._instance) || ((clazz as Singleton<T>)._instance = new clazz(args));
-            }
-        } : {
-            get: (...args: any[]) =>
-            {
                 return ((clazz as Singleton<T>)._instance) || ((clazz as Singleton<T>)._instance = new clazz(args));
             }
         }

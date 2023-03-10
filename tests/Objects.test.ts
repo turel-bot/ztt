@@ -105,5 +105,19 @@ describe('objects tests', () =>
         expect(abaa.getInstance()).toBeInstanceOf(clazzSingle);
         expect(abaa.getInstance().echo({ a: 'b' })).toStrictEqual({ a: 'b' });
         expect(() => Objects.Singleton(clazzSingle)).toThrow();
+
+        class clazzSingleGetter
+        {
+            public echo<T>(a: T): T
+            {
+                return a;
+            }
+        }
+
+        const abab = Objects.Singleton(clazzSingleGetter, true);
+        expect(abab.getInstance).toBeDefined();
+        expect(abab.getInstance).toBeInstanceOf(clazzSingleGetter);
+        expect(abab.getInstance.echo({ a: 'b' })).toStrictEqual({ a: 'b' });
+        expect(() => Objects.Singleton(clazzSingleGetter)).toThrow();
     });
 });
