@@ -30,7 +30,23 @@ type Singleton<T extends new (...args: any[]) => C, C = InstanceType<T>> = T & {
  * @returns {Singleton<T, C>} A new singleton-ified class (the instance of).
  * @throws If the argument is invalid.
  */
-const Singleton = <T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T): Singleton<T, C> =>
+function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T): Singleton<T, C>;
+/**
+ * @description Turns a class into a singleton.
+ * @param {new (...args: any[]) => any} clazz - Any class constructor. 
+ * @param {boolean} getter - Should we make #getInstance a Getter?
+ * @returns {Singleton<T, C>} A new singleton-ified class (the instance of).
+ * @throws If the argument is invalid.
+ */
+function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T, getter: boolean): Singleton<T, C>;
+/**
+ * @description Turns a class into a singleton.
+ * @param {new (...args: any[]) => any} clazz - Any class constructor. 
+ * @param {boolean} getter - Should we make #getInstance a Getter?
+ * @returns {Singleton<T, C>} A new singleton-ified class (the instance of).
+ * @throws If the argument is invalid.
+ */
+function Singleton<T extends new (...args: any[]) => any, C = InstanceType<T>>(clazz: T, getter: boolean = false): Singleton<T, C>
 {
     Objects.Validate.NotNull(clazz, 'Class provided for turning into a Singleton cannot be null.');
 
@@ -51,16 +67,21 @@ const Singleton = <T extends new (...args: any[]) => any, C = InstanceType<T>>(c
     Object.defineProperty(
         clazz,
         'getInstance',
-        {
+        getter ? {
             value: (...args: any[]) =>
             {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                return ((clazz as Singleton<T>)._instance) || ((clazz as Singleton<T>)._instance = new clazz(...args));
+                return ((clazz as Singleton<T>)._instance) || ((clazz as Singleton<T>)._instance = new clazz(args));
+            }
+        } : {
+            get: (...args: any[]) =>
+            {
+                return ((clazz as Singleton<T>)._instance) || ((clazz as Singleton<T>)._instance = new clazz(args));
             }
         }
     );
 
     return clazz as Singleton<T, C>;
-};
+}
 
 export default Singleton;
