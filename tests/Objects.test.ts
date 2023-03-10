@@ -27,14 +27,14 @@ describe('objects tests', () =>
 
     it('can check null', () =>
     {
-        expect(Objects.IsNull(null)).toBeTruthy();
-        expect(Objects.IsNull({ a: 'b' })).toBeFalsy();
+        expect(Objects.Validate.IsNull(null)).toBeTruthy();
+        expect(Objects.Validate.IsNull({ a: 'b' })).toBeFalsy();
     });
 
     it('can check if object is empty', () =>
     {
-        expect(Objects.IsEmpty({})).toBeTruthy();
-        expect(Objects.IsEmpty({ a: 'b' })).toBeFalsy();
+        expect(Objects.Validate.IsEmpty({})).toBeTruthy();
+        expect(Objects.Validate.IsEmpty({ a: 'b' })).toBeFalsy();
     });
 
     it('can clone an object', () =>
@@ -81,12 +81,12 @@ describe('objects tests', () =>
 
     it('can use nonnull and throw correctly', () =>
     {
-        expect(() => Objects.NotNull(null)).toThrow();
-        expect(() => Objects.NotNull({ a: 'b' })).not.toThrow();
+        expect(() => Objects.Validate.NotNull(null)).toThrow();
+        expect(() => Objects.Validate.NotNull({ a: 'b' })).not.toThrow();
 
         class CustomError extends Error { }
 
-        expect(() => Objects.NotNull(null, undefined, CustomError)).toThrowError(CustomError);
+        expect(() => Objects.Validate.NotNull(null, undefined, CustomError)).toThrowError(CustomError);
     });
 
     it('can force singleton correctly', () =>

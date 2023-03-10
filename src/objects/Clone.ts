@@ -1,4 +1,4 @@
-import NotNull from './NotNull';
+import NotNull from './validate/NotNull';
 
 /**
  * @description Clones an Object.

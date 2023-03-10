@@ -1,4 +1,4 @@
-import Objects from '.';
+import Objects from '..';
 
 interface ExistsOptions
 {
@@ -33,7 +33,7 @@ function Exists<T>(val: T, opts?: ExistsOptions): boolean
     if(typeof val === 'string' && val.length === 0)
         return true;
 
-    if(typeof val === 'object' && Objects.IsEmpty(val))
+    if(typeof val === 'object' && Objects.Validate.IsEmpty(val))
         return true;
 
     return false;

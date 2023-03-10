@@ -3,14 +3,11 @@ import ArrayToObject from './ArrayToObject';
 import Callback from './Callback';
 import Clone from './Clone';
 import DoesExtend from './DoesExtend';
-import Exists from './Exists';
 import ExtendsWhat from './ExtendsWhat';
 import Singleton from './Singleton';
-import IsEmpty from './IsEmpty';
-import IsNull from './IsNull';
-import NotNull from './NotNull';
 import ObjectToArray from './ObjectToArray';
 import Pipe, { Piped } from './Pipe';
+import Validate from './validate';
 
 /**
  * @description A helper for anything regarding Objects.
@@ -20,20 +17,15 @@ import Pipe, { Piped } from './Pipe';
 const Objects = {
     ArrayToObject: ArrayToObject,
     ObjectToArray: ObjectToArray,
-    IsEmpty: IsEmpty,
-    IsNull: IsNull,
-    Exists: Exists,
     Callback: Callback,
     Clone: Clone,
     DoesExtend: DoesExtend,
     ExtendsWhat: ExtendsWhat,
-    NotNull: NotNull,
-    NonNull: NotNull,
     Singleton: Singleton,
     Pipe: Pipe,
     Piped: Piped,
     PipeLine: Pipe,
-
+    Validate: Validate,
     annotations: Annotations
 };
 
