@@ -14,7 +14,6 @@ let isNode: boolean = true;
 if(typeof window !== 'undefined' && typeof process !== 'object')
     isNode = false;
 
-
 // call makeGlobal initally.
 makeGlobal();
 export
