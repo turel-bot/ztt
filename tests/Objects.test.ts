@@ -1,12 +1,15 @@
 import '../src';
 
 // this is required due to us not actually having the package installed.
-import type AObjects from '../src/objects';
+/* eslint-disable @typescript-eslint/no-namespace */
+/* eslint-disable no-var */
+import type objectsObj from '../src/objects';
+import type validateObj from '../src/objects/validate';
+
 declare global
 {
-    // this is required
-    // eslint-disable-next-line no-var
-    var Objects: typeof AObjects;
+    var Objects: typeof objectsObj;
+    var Validate: typeof validateObj;
 }
 
 describe('objects tests', () =>
@@ -27,14 +30,14 @@ describe('objects tests', () =>
 
     it('can check null', () =>
     {
-        expect(Objects.Validate.IsNull(null)).toBeTruthy();
-        expect(Objects.Validate.IsNull({ a: 'b' })).toBeFalsy();
+        expect(Validate.IsNull(null)).toBeTruthy();
+        expect(Validate.IsNull({ a: 'b' })).toBeFalsy();
     });
 
     it('can check if object is empty', () =>
     {
-        expect(Objects.Validate.IsEmpty({})).toBeTruthy();
-        expect(Objects.Validate.IsEmpty({ a: 'b' })).toBeFalsy();
+        expect(Validate.IsEmpty({})).toBeTruthy();
+        expect(Validate.IsEmpty({ a: 'b' })).toBeFalsy();
     });
 
     it('can clone an object', () =>
@@ -81,12 +84,12 @@ describe('objects tests', () =>
 
     it('can use nonnull and throw correctly', () =>
     {
-        expect(() => Objects.Validate.NotNull(null)).toThrow();
-        expect(() => Objects.Validate.NotNull({ a: 'b' })).not.toThrow();
+        expect(() => Validate.NotNull(null)).toThrow();
+        expect(() => Validate.NotNull({ a: 'b' })).not.toThrow();
 
         class CustomError extends Error { }
 
-        expect(() => Objects.Validate.NotNull(null, undefined, CustomError)).toThrowError(CustomError);
+        expect(() => Validate.NotNull(null, undefined, CustomError)).toThrowError(CustomError);
     });
 
     it('can force singleton correctly', () =>

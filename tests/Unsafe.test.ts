@@ -1,12 +1,4 @@
 import '../src';
-import type AObjects from '../src/objects';
-
-declare global
-{
-    // this is required
-    // eslint-disable-next-line no-var
-    var Objects: typeof AObjects;
-}
 
 describe('unsafe func', () =>
 {
