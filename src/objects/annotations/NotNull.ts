@@ -1,5 +1,5 @@
 /**
- * @description 
+ * @description An annotation for function arguments which ensures that the argument is not null.
  * @returns {any}
  */
 function NotNull(target: object, propertyKey: string | symbol, parameterIndex: number): any
