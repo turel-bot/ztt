@@ -9,4 +9,4 @@ declare global
     var Validate: typeof validateObj;
 }
 
-export {  };
+export { };
