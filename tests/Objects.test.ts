@@ -145,4 +145,13 @@ describe('objects tests', () =>
         expect(abab.getInstance.echo({ a: 'b' })).toStrictEqual({ a: 'b' });
         expect(() => Objects.Singleton(clazzSingleGetter)).toThrow();
     });
+
+    it('can make a random object global', () =>
+    {
+        const testGlobal = { a: 'b' };
+        Objects.Globalify('test', testGlobal);
+
+        expect(global['test']).toStrictEqual(testGlobal);
+        expect((global['test'] as any)['a']).toEqual('b');
+    });
 });
