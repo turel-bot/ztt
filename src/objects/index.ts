@@ -8,6 +8,7 @@ import Singleton from './Singleton';
 import ObjectToArray from './ObjectToArray';
 import Pipe, { Piped } from './Pipe';
 import Validate from './validate';
+import Globalify from './Globalify';
 
 /**
  * @description A helper for anything regarding Objects.
@@ -25,6 +26,7 @@ const Objects = {
     Pipe: Pipe,
     Piped: Piped,
     PipeLine: Pipe,
+    Globalify: Globalify,
     Validate: Validate,
     annotations: Annotations
 };
